@@ -1,4 +1,4 @@
-# PickableArrows - Union Plugin
+# PickableArrows - Union Plugin [Gothic I/G1A/G2/G2NotR]
 
 ![PickableArrows Screenshot](ss1.png)
 
