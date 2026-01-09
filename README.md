@@ -1,36 +1,47 @@
 # PickableArrows - Union Plugin
 
-Plugin dla Gothic 2: Nocy Kruka pozwalający na zbieranie i ponowne używanie wystrzelonych strzał i bełtów.
+![PickableArrows Screenshot](ss1.png)
 
-## Funkcje
+PickableArrows is a Union plugin for Gothic I/G1A/G2/G2NotR that allows players to recover and reuse fired arrows and bolts. This plugin adds arrow recovery mechanics to the game, making ranged combat more strategic and resource-conscious.
 
-- **Odzyskiwanie strzał z NPC** - Strzały które trafiły w przeciwników są dodawane do ich ekwipunku. Można je odzyskać z martwych lub nieprzytomnych NPC.
-- **Zbieranie strzał z ziemi** - Strzały które nie trafiły w cel spadają na ziemię i można je podnieść.
-- **Konfigurowalne szanse** - Możliwość ustawienia osobnych szans na odzyskanie strzał z ziemi i z NPC (domyślnie 100%).
+## Features
 
-## Wymagania
+- **Arrow Recovery from NPCs**: Arrows that hit enemies are added to their inventory and can be looted from dead or unconscious NPCs
+- **Ground Arrow Pickup**: Arrows that miss their target fall to the ground and can be picked up
+- **Configurable Recovery Chances**: Set separate recovery chances for ground pickup and NPC inventory (default 100%)
+- **Skill-Based Recovery**: Optional skill-based recovery system where your best bow/crossbow skill determines recovery chance (disables manual percentage settings and may be incompatible with some mods) 
+- **Full Game Support**: Compatible with Gothic I Classic, Gothic I Addon, Gothic II Classic, and Gothic II NotR, also with mods like The Chronicles Of Myrtana: Archolos and plugins like Free Aim
 
-- Gothic 2: Noc Kruka
-- Union 1.0m lub nowszy
+## Installation
 
-## Instalacja
+1. Download the latest release from the [Releases](../../releases) page
+2. Extract `PickableArrows.vdf` to your `[Gothic]\Data\Plugins` folder
+3. Launch Gothic - the plugin will load automatically
 
-1. Skompiluj plugin używając Visual Studio (projekt `.vcxproj`)
-2. Skopiuj wygenerowany plik `PickableArrows.dll` do folderu `[Gothic2]\System\Autorun\`
-3. Skopiuj ustawienia z `Gothic.ini.example` do `[Gothic2]\System\Gothic.ini`
+## Usage
 
-## Konfiguracja
+### Basic Mechanics
+- **Arrows hitting NPCs**: Automatically added to their inventory (if enabled)
+- **Arrows missing targets**: Drop to the ground as pickable items (if enabled)
+- **Recovery chances**: Configurable percentage chance for both ground and NPC recovery
+- **Skill integration**: Optional skill-based recovery system
 
-### Przez menu Union (zalecane)
+### Recovery System
+The plugin uses a probability-based system to determine if arrows are recoverable:
+- **Ground Recovery**: When arrows hit terrain, they have a chance to spawn as ground items
+- **NPC Recovery**: When arrows hit NPCs, they have a chance to be added to the NPC's inventory
+- **Skill-Based**: Optionally use your bow/crossbow skill as the recovery percentage
 
-1. Uruchom grę
-2. Wejdź do menu głównego → Opcje → Union
-3. Znajdź "PickableArrows" na liście
-4. Skonfiguruj wszystkie opcje przez graficzne menu
+## Configuration
 
-### Przez plik Gothic.ini (alternatywnie)
+### Through Union Menu (Recommended)
 
-Dodaj do pliku `Gothic.ini` sekcję:
+1. Launch the game
+2. Go to Main Menu → Options → Union
+3. Find "PickableArrows" in the list
+4. Configure all options through the graphical interface
+
+### Through Gothic.ini (Alternative)
 
 ```ini
 [PICKABLE_ARROWS]
@@ -43,30 +54,110 @@ RequireDamageForNpcRecovery=1
 ChanceDependsOnSkills=0
 ```
 
-### Opcje
+### Configuration Options
 
-| Opcja | Opis | Domyślnie |
-|-------|------|-----------|
-| `Enabled` | Włącza/wyłącz plugin | 1 |
-| `GroundRecoveryChance` | Szansa na odzyskanie strzały z ziemi (0-100%) | 100 |
-| `NpcRecoveryChance` | Szansa na odzyskanie strzały z NPC (0-100%) | 100 |
-| `AllowNpcInventoryPickup` | Dodawanie strzał do ekwipunku trafionych NPC | 1 |
-| `AllowGroundPickup` | Upuszczanie strzał na ziemię przy pudłach | 1 |
-| `RequireDamageForNpcRecovery` | Wymagaj zadania obrażeń dla odzyskania z NPC | 1 |
-| `ChanceDependsOnSkills` | Szansa zależy od umiejętności łuk/kusza (max 100%) | 0 | 
+| Option | Description | Default | Values |
+|--------|-------------|---------|---------|
+| `Enabled` | Enable/disable the entire plugin | 1 | 0=disabled, 1=enabled |
+| `GroundRecoveryChance` | Chance to recover arrows from ground (0-100%) | 100 | 0-100 |
+| `NpcRecoveryChance` | Chance to recover arrows from NPCs (0-100%) | 100 | 0-100 |
+| `AllowNpcInventoryPickup` | Add arrows to NPC inventory when hit | 1 | 0=disabled, 1=enabled |
+| `AllowGroundPickup` | Drop arrows on ground when missing the target | 1 | 0=disabled, 1=enabled |
+| `RequireDamageForNpcRecovery` | Require damage dealt for NPC recovery | 1 | 0=disabled, 1=enabled |
+| `ChanceDependsOnSkills` | Use bow/crossbow skill as recovery chance | 0 | 0=disabled, 1=enabled |
 
-## Ostrzeżenie
+### Detailed Option Explanations
 
-> **UWAGA:** Użycie tego pluginu nieodwracalnie zmienia balans gry!
-> Liczba dostępnych strzał w grze zostanie zredukowana, ponieważ NPC nie będą już mieli "nieskończonej" amunicji.
+#### Enabled
+Controls whether the plugin is active. When disabled, arrows behave normally (disappear after use).
 
-## Budowanie
+#### GroundRecoveryChance / NpcRecoveryChance
+Percentage chance (0-100) that an arrow will be recoverable. Set to 0 for no recovery, 100 for guaranteed recovery.
 
-1. Otwórz `BonusIndependentTraining.sln` w Visual Studio 2022
-2. Wybierz konfigurację `G2A MT Release`
-3. Zbuduj projekt (F7)
-4. Plik DLL znajdziesz w folderze `Bin\`
+#### AllowNpcInventoryPickup
+When enabled, arrows that hit NPCs are added to their inventory and can be looted. When disabled, arrows hitting NPCs are lost.
 
-## Licencja
+#### AllowGroundPickup
+When enabled, arrows that miss targets drop to the ground as pickable items. When disabled, missed arrows are lost.
+
+#### RequireDamageForNpcRecovery
+When enabled, arrows are only added to NPC inventory if they actually deal damage. Arrows that hit the target but deal no damage are not recoverable.
+
+#### ChanceDependsOnSkills
+When enabled, ignores the fixed recovery chance values and instead uses your highest bow/crossbow skill percentage as the recovery chance. This option disables manual percentage adjustment and may be incompatible with mods that modify skill systems. Integrates with BonusIndependentTraining plugin if available.
+
+## Building from Source
+
+### Prerequisites
+- Visual Studio 2019 or later
+- Union SDK v1.0m
+
+### Build Steps
+1. Clone this repository
+2. Copy ZenGin folder from Union SDK to `PickableArrows/ZenGin/`
+3. Open `PickableArrows.sln` in Visual Studio
+4. Select "MP x4 MT Release" configuration
+5. Build the solution
+6. Find the compiled DLL in the `Bin/` folder
+
+## Credits
+
+### Development
+- **Plugin Author** - PickableArrows Union implementation
+- **Union Team** - For the excellent Union SDK framework
+- **Gothic Community** - For continued support and testing
+
+## License
 
 MIT License
+
+## Compatibility
+
+- **Gothic I Classic**: ✅ Supported
+- **Gothic I Addon**: ✅ Supported
+- **Gothic II Classic**: ✅ Supported  
+- **Gothic II NotR**: ✅ Supported
+- **The Chronicles Of Myrtana: Archolos**: ✅ Supported
+- **Free Aim**: ✅ Tested with 2 Free Aim Union plugins and worked
+- **BonusIndependentTraining-Union**: ✅ Supported
+- **Other Plugins**: Compatible with most Union plugins
+
+## Troubleshooting
+
+### Plugin Not Loading
+- Ensure `PickableArrows.vdf` is in the correct folder: `[Gothic]\Data\Plugins`
+- Check that Union is properly installed
+- Verify Gothic version compatibility
+- Check Gothic.ini configuration syntax
+
+### Arrows Not Being Recovered
+- Verify that `Enabled=1` in Gothic.ini
+- Check that recovery chances are above 0
+- Ensure `AllowNpcInventoryPickup` or `AllowGroundPickup` are enabled
+- If using skill-based recovery, check your bow/crossbow skill level
+
+### Performance Issues
+- Lower recovery chances if experiencing lag with many arrows
+- Consider disabling ground pickup in areas with frequent combat
+
+## Contributing
+
+This is a community project. Feel free to:
+- Report bugs in the [Issues](../../issues) section
+- Submit improvements via Pull Requests
+- Share feedback and suggestions
+- Test with different Gothic versions and mods
+
+## Version History
+
+- **v1.0.0** - Initial release
+  - Full arrow recovery system
+  - Configurable recovery chances
+  - Support for all Gothic versions
+  - Union menu integration
+  - Skill-based recovery option
+  - BonusIndependentTraining integration
+
+---
+
+**Note**: This plugin modifies game balance by making arrows recoverable. Consider adjusting recovery chances based on your preferred difficulty level.
