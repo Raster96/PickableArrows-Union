@@ -1,0 +1,113 @@
+; ============================================
+; PickableArrows - Configuration
+; Example configuration for Gothic.ini
+; ============================================
+;
+; Copy these settings to your Gothic.ini file
+; Location: [Gothic2]\System\Gothic.ini
+;
+; Add a new section [PICKABLE_ARROWS] or modify existing one
+;
+; WARNING: Usage of this plugin irreversibly changes the game balance!
+; The number of available projectiles in the game will be reduced.
+
+[PICKABLE_ARROWS]
+
+; ============================================
+; Enabled
+; ============================================
+; Enable or disable the entire plugin
+;
+; 0 = disabled (arrows behave normally - disappear after use)
+; 1 = enabled (arrows can be recovered)
+;
+; Default: 1
+Enabled=1
+
+; ============================================
+; GroundRecoveryChance
+; ============================================
+; Chance to recover an arrow or bolt when it hits terrain (ground, walls, etc.)
+; Value: 0-100 (percent)
+;
+; 0 = 0% chance (never recoverable)
+; 50 = 50% chance 
+; 100 = 100% chance (always recoverable)
+;
+; Default: 100 (100%)
+GroundRecoveryChance=100
+
+; ============================================
+; NpcRecoveryChance
+; ============================================
+; Chance to recover an arrow or bolt when it hits an NPC
+; Value: 0-100 (percent)
+;
+; 0 = 0% chance (never added to inventory)
+; 50 = 50% chance
+; 100 = 100% chance (always added to inventory)
+;
+; Default: 100 (100%)
+NpcRecoveryChance=100
+
+; ============================================
+; AllowNpcInventoryPickup
+; ============================================
+; When an arrow hits an NPC, add it to their inventory
+; This allows looting arrows from NPCs you've shot
+;
+; 0 = disabled (arrows that hit NPCs are lost)
+; 1 = enabled (arrows are added to NPC inventory)
+;
+; Default: 1
+AllowNpcInventoryPickup=1
+
+; ============================================
+; AllowGroundPickup
+; ============================================
+; When an arrow hits terrain (ground, walls, etc.), drop it as a pickup
+; This allows recovering missed shots
+;
+; 0 = disabled (arrows that miss are lost)
+; 1 = enabled (arrows drop on the ground)
+;
+; Default: 1
+AllowGroundPickup=1
+
+; ============================================
+; ChanceDependsOnSkills
+; ============================================
+; When enabled, recovery chance is based on your highest bow/crossbow skill
+; instead of the fixed values above.
+; Uses trained skill values from BonusIndependent plugin if available,
+; otherwise uses effective skill values from the game.
+;
+; 0 = disabled (use fixed GroundRecoveryChance and NpcRecoveryChance)
+; 1 = enabled (use bow/crossbow skill as recovery chance)
+;
+; ============================================
+; RequireDamageForNpcRecovery
+; ============================================
+; When enabled, arrows will only be added to NPC inventory if damage was dealt.
+; When disabled, arrows are recoverable even if they hit but deal no damage.
+; Only works when AllowNpcInventoryPickup is enabled.
+;
+; 0 = disabled (arrows added on any hit, even without damage)
+; 1 = enabled (arrows added only if damage was dealt)
+;
+; Default: 1
+RequireDamageForNpcRecovery=1
+
+; ============================================
+; ChanceDependsOnSkills
+; ============================================
+; When enabled, recovery chance is based on your highest bow/crossbow skill
+; instead of the fixed values above.
+; Uses trained skill values from BonusIndependent plugin if available,
+; otherwise uses effective skill values from the game.
+;
+; 0 = disabled (use fixed GroundRecoveryChance and NpcRecoveryChance)
+; 1 = enabled (use bow/crossbow skill as recovery chance)
+;
+; Default: 0
+ChanceDependsOnSkills=0
