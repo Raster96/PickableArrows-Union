@@ -147,6 +147,7 @@ This is a community project. Feel free to:
 - Submit improvements via Pull Requests
 - Share feedback and suggestions
 - Test with different Gothic versions and mods
+- Discord: raster96
 
 ## Version History
 
