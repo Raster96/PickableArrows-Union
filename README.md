@@ -30,7 +30,7 @@ PickableArrows is a Union plugin for Gothic I/G1A/G2/G2NotR that allows players 
 The plugin uses a probability-based system to determine if arrows are recoverable:
 - **Ground Recovery**: When arrows hit terrain, they have a chance to spawn as ground items
 - **NPC Recovery**: When arrows hit NPCs, they have a chance to be added to the NPC's inventory
-- **Skill-Based**: Optionally use your bow/crossbow skill as the recovery percentage
+- **Skill-Based**: Optionally use your best bow/crossbow skill as the recovery percentage (disables manual percentage settings and may be incompatible with some mods)
 
 ## Configuration
 
@@ -64,7 +64,7 @@ ChanceDependsOnSkills=0
 | `AllowNpcInventoryPickup` | Add arrows to NPC inventory when hit | 1 | 0=disabled, 1=enabled |
 | `AllowGroundPickup` | Drop arrows on ground when missing the target | 1 | 0=disabled, 1=enabled |
 | `RequireDamageForNpcRecovery` | Require damage dealt for NPC recovery | 1 | 0=disabled, 1=enabled |
-| `ChanceDependsOnSkills` | Use bow/crossbow skill as recovery chance | 0 | 0=disabled, 1=enabled |
+| `ChanceDependsOnSkills` | Use bow/crossbow skill as recovery chance (disables manual percentage settings and may be incompatible with some mods) | 0 | 0=disabled, 1=enabled |
 
 ### Detailed Option Explanations
 
