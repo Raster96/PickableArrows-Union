@@ -1,6 +1,7 @@
 # PickableArrows - Union Plugin [Gothic I/G1A/G2/G2NotR]
 
 ![PickableArrows Screenshot](ss1.png)
+https://www.youtube.com/watch?v=nCzVM-lm3uE
 
 PickableArrows is a Union plugin for Gothic I/G1A/G2/G2NotR that allows players to recover and reuse fired arrows and bolts. This plugin adds arrow recovery mechanics to the game, making ranged combat more strategic and resource-conscious.
 
