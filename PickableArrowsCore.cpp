@@ -3,11 +3,6 @@
 
 namespace GOTHIC_ENGINE {
     
-    // BonusIndependentTraining constants - aiscriptvars indices for real (trained) talent values
-    // Using only when BonusIndependentTraining is installed
-    const int REAL_TALENT_BOW_INDEX = 95;
-    const int REAL_TALENT_CROSSBOW_INDEX = 96;
-    
     bool PickableArrowsCore::enabled = true;
     float PickableArrowsCore::groundRecoveryChance = 1.0f;  // 100% domyślnie
     float PickableArrowsCore::npcRecoveryChance = 1.0f;     // 100% domyślnie
@@ -32,13 +27,6 @@ namespace GOTHIC_ENGINE {
         int crossbowPercent = hero->GetTalentValue(oCNpcTalent::NPC_TAL_CROSSBOW);
         return max(bowPercent, crossbowPercent);
         #else
-        int trainedBow = hero->aiscriptvars[REAL_TALENT_BOW_INDEX];
-        int trainedXbow = hero->aiscriptvars[REAL_TALENT_CROSSBOW_INDEX];
-        
-        if (trainedBow > 0 || trainedXbow > 0) {
-            return max(trainedBow, trainedXbow);
-        }
-        
         int effectiveBow = hero->hitChance[NPC_HITCHANCE_BOW];
         int effectiveXbow = hero->hitChance[NPC_HITCHANCE_CROSSBOW];
         return max(effectiveBow, effectiveXbow);
